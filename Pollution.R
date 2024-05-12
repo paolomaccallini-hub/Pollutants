@@ -42,8 +42,10 @@ e.data<-e.list[[1]]
 for (p in 1:length(pollutants)) {
   for (d in 1:length(e.list[[i]][,1])) {
     vec<-c()
-    for (y in 1:length(years)) vec[y]<-e.list[[y]][d,p]
-    e.data[d,p]<-mean(vec[y],na.rm=T)
+    for (y in 1:length(years)) {
+      vec[y]<-e.list[[y]][d,p]
+      e.data[d,p]<-mean(vec[y],na.rm=T)
+    }
   }
 }
 fun.plot(e.data,paste(years[1],"-",years[length(years)]),pollutants)
